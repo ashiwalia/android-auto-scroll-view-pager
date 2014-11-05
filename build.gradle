@@ -3,11 +3,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.2'
+        classpath rootProject.ext.gradleVersion
     }
 }
 
-apply plugin: "android-library"
+apply plugin: "com.android.library"
 
 //http://stackoverflow.com/questions/16683775/include-so-library-in-apk-in-android-studio
 dependencies {
