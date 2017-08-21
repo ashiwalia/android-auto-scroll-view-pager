@@ -1,8 +1,5 @@
 package cn.trinea.android.view.autoscrollviewpager;
 
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.animation.Interpolator;
+
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 
 /**
  * Auto Scroll View Pager
@@ -151,6 +151,11 @@ public class AutoScrollViewPager extends ViewPager {
         }
     }
 
+    public void cleanup() {
+        ((MyHandler)handler).cleanup();
+        handler = null;
+    }
+
     /**
      * scroll only once
      */
@@ -226,6 +231,14 @@ public class AutoScrollViewPager extends ViewPager {
         * based on https://github.com/youfacepalm comment to fix the issue 
         * "don't consume touch event when scroll up or down #29"
         */
+
+        boolean consumeTouch = false;
+        if (action == MotionEvent.ACTION_DOWN) {
+            touchY = ev.getY();
+        } else if (action == MotionEvent.ACTION_UP) {
+            consumeTouch = Math.abs(touchY - ev.getY()) > 0;
+        }
+
         if (consumeTouch) {
             getParent().requestDisallowInterceptTouchEvent(true);
         } else {
@@ -235,6 +248,10 @@ public class AutoScrollViewPager extends ViewPager {
         }
 
         return super.dispatchTouchEvent(ev);
+    }
+
+    public void setScrollDurationFactor(int scrollDurationFactor) {
+        autoScrollFactor = scrollDurationFactor;
     }
 
     private static class MyHandler extends Handler {
@@ -261,6 +278,10 @@ public class AutoScrollViewPager extends ViewPager {
                 default:
                     break;
             }
+        }
+
+        public void cleanup() {
+            autoScrollViewPager.clear();
         }
     }
 
