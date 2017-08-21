@@ -1,8 +1,9 @@
 Android Auto Scroll ViewPager
 ==============================
-- ViewPager which can auto scrolling, cycling, decelerating.
-- ViewPager which can be slided normal in parent ViewPager.
-- 中文介绍见: [Android自动滚动 轮播循环的ViewPager](http://www.trinea.cn/android/auto-scroll-view-pager/)
+ViewPager which can auto scrolling, cycling, decelerating.  
+ViewPager which can be slided normal in parent ViewPager.  
+
+中文介绍见: [Android自动滚动 轮播循环的ViewPager](http://www.trinea.cn/android/auto-scroll-view-pager/)
 ![android-auto-scroll-view-pager](http://farm3.staticflickr.com/2843/12805132475_e595664a81_o.gif)
 
 ## Sample Application
@@ -41,7 +42,7 @@ replace
 - `setSlideBorderMode(int)` set how to process when sliding at the last or first item, default is `SLIDE_BORDER_MODE_NONE`.
 - `setStopScrollWhenTouch(boolean)` set whether stop auto scroll when touching, default is true.  
 - `setBorderAnimation(boolean)` set whether animating when auto scroll at the last or first item, default is true.  
-- You may need [ViewPagerIndicator](https://github.com/JakeWharton/Android-ViewPagerIndicator) to implement indicator. 
+- You cannot combine with [ViewPagerIndicator](https://github.com/JakeWharton/Android-ViewPagerIndicator) if `setCycle(true)`. 
 - If you want infinite loop, please see [AutoScrollViewPagerSingleDemo.java](https://github.com/Trinea/android-demo/blob/master/src/cn/trinea/android/demo/AutoScrollViewPagerDemo.java)  
 **More:** http://www.trinea.cn/android/auto-scroll-view-pager/
 
@@ -52,8 +53,26 @@ replace
 -dontwarn cn.trinea.android.**
 ```
 
+## Download
+Maven:  
+``` xml
+<dependency>
+    <groupId>cn.trinea.android.view.autoscrollviewpager</groupId>
+    <artifactId>android-auto-scroll-view-pager</artifactId>
+    <version>1.1.2</version>
+</dependency>
+```  
+
+Gradle:  
+``` xml
+compile ('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
+    exclude module: 'support-v4'
+}
+```  
+
 ## Contact Me
-- [trinea_cn@twitter](https://twitter.com/trinea_cn)
+- [trinea@google plus](https://plus.google.com/u/0/111989205221366883984)
+- [trinea@twitter](https://twitter.com/trinea_cn)
 - [trinea@weibo](http://weibo.com/trinea)
 - [trinea.cn](http://www.trinea.cn/)
 - [trinea.cn#gmail.com](mailto:trinea.cn@gmail.com)
