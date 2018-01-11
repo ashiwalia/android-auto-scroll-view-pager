@@ -1,11 +1,11 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
+
+repositories {
+    mavenCentral()
+    jcenter()
+    flatDir{
+        dirs '../../app/libs'
     }
-    dependencies {
-        classpath rootProject.ext.gradleVersion
-    }
+    google()
 }
 
 apply plugin: "com.android.library"
@@ -19,8 +19,8 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.1"
 
     defaultConfig {
         minSdkVersion 15
