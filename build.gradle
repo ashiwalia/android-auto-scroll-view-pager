@@ -13,9 +13,9 @@ apply plugin: "com.android.library"
 //http://stackoverflow.com/questions/16683775/include-so-library-in-apk-in-android-studio
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
-    implementation "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    compileOnly "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+    compileOnly "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
+    compileOnly "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
 }
 
 android {
