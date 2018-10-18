@@ -1,8 +1,7 @@
-
 repositories {
     mavenCentral()
     jcenter()
-    flatDir{
+    flatDir {
         dirs '../../app/libs'
     }
     google()
@@ -13,18 +12,18 @@ apply plugin: "com.android.library"
 //http://stackoverflow.com/questions/16683775/include-so-library-in-apk-in-android-studio
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
-    compileOnly "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
-    compileOnly "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
-    compileOnly "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
 }
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 28
     }
 
     sourceSets {
